@@ -24,3 +24,8 @@ wrangler-account.json*
 # Build output and dependencies (if added later)
 dist/
 node_modules/
+
+# Editor / OS files
+.vscode/
+.idea/
+.DS_Store

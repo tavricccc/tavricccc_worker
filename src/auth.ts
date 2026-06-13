@@ -527,32 +527,38 @@ function buildLoginEmailHtml(loginUrl: string, email: string): string {
 	<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background-color: #f4f4f5; padding: 48px 20px;">
 		<tr>
 			<td align="center">
-				<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 420px; background-color: #ffffff; border-radius: 8px; border: 1px solid #e4e4e7;">
+				<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width: 440px; background-color: #ffffff; border-radius: 16px; border: 1px solid #e7e2d4; box-shadow: 0 18px 48px rgba(24,24,27,0.08); overflow: hidden;">
+					<!-- Gold hairline accent -->
+					<tr>
+						<td style="height: 3px; background: linear-gradient(90deg, #b47e24, #e2be6e, #966616); font-size: 0; line-height: 0;">&nbsp;</td>
+					</tr>
 					<!-- Header -->
 					<tr>
-						<td style="padding: 24px 24px 0; text-align: center;">
-							<h1 style="margin: 0; font-size: 20px; font-weight: 600; color: #18181b;">Dan's Blog</h1>
+						<td style="padding: 32px 32px 0; text-align: center;">
+							<div style="display: inline-block; padding: 5px 12px; border: 1px solid #ece6d6; border-radius: 999px; background-color: #faf7f0; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #a8761e;">Secure Sign In</div>
+							<h1 style="margin: 18px 0 0; font-size: 26px; font-weight: 600; letter-spacing: -0.01em; color: #18181b;">Dan<span style="color: #b47e24;">&rsquo;</span>s <span style="font-style: italic; font-weight: 500; color: #52525b;">Blog</span></h1>
+							<div style="margin: 14px auto 0; width: 40px; height: 1px; background: linear-gradient(90deg, rgba(180,126,36,0), #b47e24, rgba(180,126,36,0));">&nbsp;</div>
 						</td>
 					</tr>
 					<!-- Content -->
 					<tr>
-						<td style="padding: 24px 24px 20px; text-align: center;">
-							<p style="margin: 0 0 16px; font-size: 14px; color: #52525b; line-height: 1.5;">
-								Click to sign in:
+						<td style="padding: 22px 32px 26px; text-align: center;">
+							<p style="margin: 0 0 22px; font-size: 15px; color: #52525b; line-height: 1.6;">
+								Tap the button below to sign in. This magic link works once and only for you.
 							</p>
 							<!-- CTA Button -->
-							<div style="padding: 0 0 16px;">
-								<a href="${loginUrl}" style="display: inline-block; padding: 10px 20px; font-size: 14px; font-weight: 500; color: #ffffff; background-color: #18181b; text-decoration: none; border-radius: 6px;">Sign in</a>
+							<div style="padding: 0 0 22px;">
+								<a href="${loginUrl}" style="display: inline-block; padding: 13px 30px; font-size: 15px; font-weight: 600; color: #ffffff; background-color: #18181b; text-decoration: none; border-radius: 12px; box-shadow: 0 10px 22px rgba(24,24,27,0.18);">Sign in &rarr;</a>
 							</div>
 							<!-- Email info -->
-							<p style="margin: 0; font-size: 13px; color: #71717a;">
-								Sign in with: ${email}
+							<p style="margin: 0; font-size: 13px; color: #71717a; line-height: 1.5;">
+								Requested for <span style="font-weight: 600; color: #3f3f46;">${escapeHtml(email)}</span>
 							</p>
 						</td>
 					</tr>
 					<!-- Footer -->
 					<tr>
-						<td style="padding: 16px 24px; background-color: #fafafa; border-top: 1px solid #e4e4e7; border-radius: 0 0 8px 8px;">
+						<td style="padding: 16px 32px; background-color: #faf7f0; border-top: 1px solid #ece6d6;">
 							<p style="margin: 0; font-size: 12px; color: #a1a1aa; text-align: center;">
 								Link expires in 15 minutes
 							</p>
@@ -560,7 +566,7 @@ function buildLoginEmailHtml(loginUrl: string, email: string): string {
 					</tr>
 				</table>
 				<p style="margin: 20px 0 0; font-size: 11px; color: #a1a1aa; text-align: center;">
-					Ignore if you didn't request this
+					Didn't request this? You can safely ignore this email.
 				</p>
 			</td>
 		</tr>
