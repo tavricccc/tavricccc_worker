@@ -14,6 +14,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Generate wrangler.toml from example
+        run: |
+          cp wrangler.toml.example wrangler.toml
+          sed -i "s/tavrics-worker/tavricccc-worker/g" wrangler.toml
+          sed -i "s/YOUR_SUBDOMAIN/tavric/g" wrangler.toml
+          sed -i "s/tavrics-d1/tavricccc-d1/g" wrangler.toml
+          sed -i "s/YOUR_D1_DATABASE_ID/5d4828ad-6fa0-476a-b439-a096a3b4c918/g" wrangler.toml
+          sed -i "s/tavrics-images/tavricccc-images/g" wrangler.toml
+          sed -i "s/YOUR_RATE_LIMIT_KV_NAMESPACE_ID/4986ca8080d14da4b9033b9d000457f5/g" wrangler.toml
+          sed -i "s/YOUR_MODERATION_KV_NAMESPACE_ID/4730f831b49a4fa5804ad02a9b0dea26/g" wrangler.toml
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
