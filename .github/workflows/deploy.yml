@@ -25,7 +25,7 @@ jobs:
 
       - name: Inject GITHUB_CLIENT_ID into wrangler.toml
         env:
-          GITHUB_CLIENT_ID: ${{ secrets.GITHUB_CLIENT_ID }}
+          GITHUB_CLIENT_ID: ${{ secrets.GH_CLIENT_ID }}
         run: |
           if [ ! -z "$GITHUB_CLIENT_ID" ]; then
             sed -i "s/PLACEHOLDER_GITHUB_CLIENT_ID/$GITHUB_CLIENT_ID/g" wrangler.toml
@@ -43,7 +43,7 @@ jobs:
             ADMIN_EMAILS
             MODERATION_SECRET
         env:
-          GITHUB_CLIENT_SECRET: ${{ secrets.GITHUB_CLIENT_SECRET }}
+          GITHUB_CLIENT_SECRET: ${{ secrets.GH_CLIENT_SECRET }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           TURNSTILE_SECRET_KEY: ${{ secrets.TURNSTILE_SECRET_KEY }}
           CONTACT_TO_EMAIL: ${{ secrets.CONTACT_TO_EMAIL }}
