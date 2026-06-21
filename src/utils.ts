@@ -108,7 +108,7 @@ export function normalizePostSlug(input: unknown): string | null {
 	if (typeof input !== 'string') return null;
 	const trimmed = input.trim();
 	if (!trimmed || trimmed.length > POST_SLUG_MAX_LENGTH) return null;
-	if (!/^[A-Za-z0-9/_-]+$/.test(trimmed)) return null;
+	if (!/^[\p{L}\p{N}/_-]+$/u.test(trimmed)) return null;
 	return trimmed;
 }
 
