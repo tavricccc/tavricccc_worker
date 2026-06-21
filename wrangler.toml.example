@@ -9,6 +9,7 @@ PUBLIC_ALLOWED_ORIGIN = "https://tavricccc.github.io" # Your blog domain
 BASE_URL = "https://tavrics-worker.YOUR_SUBDOMAIN.workers.dev" # Your Worker API URL
 FRONTEND_URL = "https://tavricccc.github.io"         # Your blog domain
 SESSION_TTL_SECONDS = "2592000"                       # Session expiry (e.g. 30 days)
+# R2_PUBLIC_URL = "https://your-custom-r2-domain.com"     # Optional: if you bound a domain to your R2 bucket.
 
 # D1 Database Binding
 [[d1_databases]]

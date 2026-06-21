@@ -18,6 +18,7 @@ export interface Env {
 	CONTACT_TO_EMAIL?: string;   // 博主收件箱：联系表单 + 评论待审通知都发到这里
 	MODERATION_SECRET?: string;  // 审批链接 HMAC 签名密钥（缺省回退 GITHUB_CLIENT_SECRET）
 	FRONTEND_URL?: string;
+	R2_PUBLIC_URL?: string;
 }
 
 export interface SessionRow {

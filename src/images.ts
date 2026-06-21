@@ -52,7 +52,7 @@ async function handleImageList(request: Request, env: Env): Promise<Response> {
 		const images = result.objects.map((obj) => ({
 			key: obj.key,
 			size: obj.size,
-			url: `https://img.danarnoux.com/${obj.key}`,
+			url: `${env.R2_PUBLIC_URL || 'https://img.danarnoux.com'}/${obj.key}`,
 		}));
 
 		return json({ images, truncated: result.truncated, cursor: result.truncated ? result.cursor : undefined });
@@ -93,7 +93,7 @@ export async function handleImageUpload(request: Request, env: Env): Promise<Res
 		const arrayBuffer = await request.arrayBuffer();
 		await env.IMAGES.put(key, arrayBuffer);
 
-		const imageUrl = `https://img.danarnoux.com/${key}`;
+		const imageUrl = `${env.R2_PUBLIC_URL || 'https://img.danarnoux.com'}/${key}`;
 		return json({ key, url: imageUrl }, 201);
 	} catch (error) {
 		console.error('R2 upload error:', error);
