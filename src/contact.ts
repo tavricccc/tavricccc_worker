@@ -66,7 +66,7 @@ export async function handleContact(request: Request, env: Env): Promise<Respons
 		const htmlContent = buildContactEmailHtml(name, email, message);
 
 		await resend.emails.send({
-			from: 'DAN ARNOUX <contact@mail.danarnoux.com>',
+			from: 'Tavric\'s Blog <onboarding@resend.dev>',
 			to: [to],
 			replyTo: email,
 			subject: `${suspicious ? '⚠️ ' : '📬 '}${name} sent you a message`,

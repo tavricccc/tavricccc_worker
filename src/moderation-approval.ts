@@ -8,10 +8,10 @@ import { escapeHtml } from './utils';
 // ============================================================
 
 // 对外公开的发信身份（非私人邮箱，绑定 Resend 验证域），可留在源码。
-const FROM = "Dan's Blog <contact@mail.danarnoux.com>";
+const FROM = "Tavric's Blog <onboarding@resend.dev>";
 
 function base(env: Env): string {
-	return env.BASE_URL || 'https://api.danarnoux.com';
+	return env.BASE_URL || 'https://tavricccc-worker.tavric.workers.dev';
 }
 
 function moderationSecret(env: Env): string {

@@ -311,9 +311,9 @@ export async function handleEmailSend(request: Request, env: Env): Promise<Respo
 		const resend = new Resend(env.RESEND_API_KEY);
 
 		await resend.emails.send({
-			from: 'Dan\'s Blog Login <login@mail.danarnoux.com>',
+			from: 'Tavric\'s Blog Login <onboarding@resend.dev>',
 			to: [email],
-			subject: '🔐 Sign in to Dan\'s Blog',
+			subject: '🔐 Sign in to Tavric\'s Blog',
 			html: htmlEmail,
 		});
 	} catch (error) {
