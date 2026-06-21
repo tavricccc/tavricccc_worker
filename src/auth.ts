@@ -131,7 +131,7 @@ export async function handleGithubCallback(request: Request, env: Env): Promise<
 		.bind(sessionToken, userId, now, expiresAt, clientIp(request), (request.headers.get('user-agent') ?? '').slice(0, 256))
 		.run();
 
-	const redirectTo = `${FRONTEND_URL}/#token=${encodeURIComponent(sessionToken)}`;
+	const redirectTo = `${env.FRONTEND_URL || FRONTEND_URL}/#token=${encodeURIComponent(sessionToken)}`;
 	const headers = new Headers({ location: redirectTo, 'cache-control': 'no-store' });
 	headers.append('set-cookie', clearCookie(STATE_COOKIE));
 	headers.append('set-cookie', clearCookie(VERIFIER_COOKIE));
@@ -481,7 +481,7 @@ async function verifyTurnstile(token: string, secret: string, remoteIp?: string)
 }
 
 function redirectWithClearedOAuth(returnTo: string): Response {
-	const location = returnTo.includes('danarnoux.com') ? returnTo : FRONTEND_URL;
+	const location = returnTo.includes('danarnoux.com') || returnTo.includes('tavricccc.github.io') ? returnTo : (env.FRONTEND_URL || FRONTEND_URL);
 	const headers = new Headers({ location, 'cache-control': 'no-store' });
 	headers.append('set-cookie', clearCookie(STATE_COOKIE));
 	headers.append('set-cookie', clearCookie(VERIFIER_COOKIE));

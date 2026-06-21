@@ -17,6 +17,7 @@ export interface Env {
 	ADMIN_EMAILS?: string;       // 管理员登录邮箱（admin 权限校验）——原先明文在 wrangler.toml，已改 secret
 	CONTACT_TO_EMAIL?: string;   // 博主收件箱：联系表单 + 评论待审通知都发到这里
 	MODERATION_SECRET?: string;  // 审批链接 HMAC 签名密钥（缺省回退 GITHUB_CLIENT_SECRET）
+	FRONTEND_URL?: string;
 }
 
 export interface SessionRow {
