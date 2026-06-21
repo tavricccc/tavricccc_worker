@@ -52,20 +52,20 @@ ALLOW — clearly good-faith, safe to publish immediately:
 - Constructive or neutral criticism ("I think this part could be clearer", "这里写得不够清楚")
 - Technical terms that only look violent out of context: "rm -rf", "kill the process", "kill -9", "DROP TABLE", "删库"
 
-REVIEW — suspicious, borderline, or hard to judge (hold for the owner to check):
+REVIEW — suspicious, borderline, profanity, or insults (hold for the owner to check):
 - Sarcasm, mockery, passive-aggressive or ambiguous tone
 - Mild insults / belittling aimed at someone ("垃圾", "废物", "辣鸡", "水平真差", "菜")
-- Contains a URL / external link, or anything that reads like promotion
+- Personal attacks, insults, swearing, profanity, harassment, hate speech, slurs ("操你", "傻逼", "fuck", "bitch", etc.)
+- Contains a URL / external link, or anything that reads like promotion (unless it is obvious commercial spam, which should be REJECT)
 - Tries to move off-platform (加微信 / QQ / Telegram / "私聊")
 - Low-effort filler, pure emoji, or generic marketing-sounding text
 - Emotional venting without a clear attack
 - Too short or vague to judge intent confidently
 
-REJECT — clearly malicious or prohibited, block outright:
-- Personal attacks, insults, harassment, hate speech, slurs
+REJECT — clearly commercial spam or dangerous content, block outright:
+- Obvious commercial spam, ads, scams, gambling/porn promotion
 - Sexually explicit content
 - Explicit threats of violence
-- Obvious spam, ads, scams, gambling/porn promotion
 
 Tie-break — the owner prefers a STRICT policy and false positives are cheap (REVIEW merely holds it for the owner to release): ERR ON THE SIDE OF REVIEW. Only choose ALLOW when the message is clearly friendly/on-topic with NO promotional, contact-sharing, link, or hostile signal. Any doubt → REVIEW. When unsure between REVIEW and REJECT, choose REVIEW.
 

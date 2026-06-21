@@ -115,17 +115,17 @@ export function ruleFilter(content: string): { result: ModerationResult; reason?
 		}
 	}
 
-	// Check for English vulgar abbreviations
+	// Check for English vulgar abbreviations (held for review)
 	for (const pattern of VULGAR_ABBREVIATIONS) {
 		if (pattern.test(content)) {
-			return { result: 'REJECT', reason: 'Content contains inappropriate language' };
+			return { result: 'REVIEW', reason: 'Content contains inappropriate language' };
 		}
 	}
 
-	// Check for Chinese profanity
+	// Check for Chinese profanity (held for review)
 	for (const pattern of CHINESE_PROFANITY_PATTERNS) {
 		if (pattern.test(content)) {
-			return { result: 'REJECT', reason: 'Content contains inappropriate language' };
+			return { result: 'REVIEW', reason: 'Content contains inappropriate language' };
 		}
 	}
 
