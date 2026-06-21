@@ -1,7 +1,7 @@
 export interface Env {
 	DB: D1Database;
 	IMAGES: R2Bucket;
-	RATE_LIMITER: DurableObjectNamespace;
+	RATE_LIMITER?: DurableObjectNamespace;
 	RATE_LIMIT_KV: KVNamespace;
 	MODERATION_KV: KVNamespace;
 	AI: Ai;

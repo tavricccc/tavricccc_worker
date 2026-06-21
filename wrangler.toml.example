@@ -1,0 +1,48 @@
+name = "tavrics-worker"
+main = "src/index.ts"
+compatibility_date = "2024-11-27"
+
+# [vars] env variables (Non-sensitive)
+[vars]
+GITHUB_CLIENT_ID = "YOUR_GITHUB_CLIENT_ID"            # GitHub OAuth App Client ID
+PUBLIC_ALLOWED_ORIGIN = "https://tavricccc.github.io" # Your blog domain
+BASE_URL = "https://tavrics-worker.YOUR_SUBDOMAIN.workers.dev" # Your Worker API URL
+FRONTEND_URL = "https://tavricccc.github.io"         # Your blog domain
+SESSION_TTL_SECONDS = "2592000"                       # Session expiry (e.g. 30 days)
+
+# D1 Database Binding
+[[d1_databases]]
+binding = "DB"
+database_name = "tavrics-d1"                          # Replace with your D1 database name
+database_id = "YOUR_D1_DATABASE_ID"                  # Replace with your D1 database ID
+
+# R2 Object Storage Binding
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "tavrics-images"                        # Replace with your R2 bucket name
+
+# KV Namespaces Bindings
+[[kv_namespaces]]
+binding = "RATE_LIMIT_KV"
+id = "YOUR_RATE_LIMIT_KV_NAMESPACE_ID"                # Replace with your KV namespace ID for rate limiting
+
+[[kv_namespaces]]
+binding = "MODERATION_KV"
+id = "YOUR_MODERATION_KV_NAMESPACE_ID"                # Replace with your KV namespace ID for comment moderation
+
+# Workers AI Binding (Used for auto-moderation of comments)
+[ai]
+binding = "AI"
+
+# Optional: Durable Objects (Paid Plan Only)
+# If you are on the Cloudflare Free Plan, keep these commented out.
+# Our worker code has a built-in KV fallback so DOs are not required.
+# 
+# [durable_objects]
+# bindings = [
+#   { name = "RATE_LIMITER", class_name = "RateLimiter" }
+# ]
+# 
+# [[migrations]]
+# tag = "v1"
+# new_classes = ["RateLimiter"]

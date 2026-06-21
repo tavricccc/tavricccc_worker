@@ -169,6 +169,28 @@ export async function findSessionUser(env: Env, token: string): Promise<SessionR
 
 export async function checkRateLimit(request: Request, env: Env, route: string): Promise<Response | null> {
 	const ip = clientIp(request);
+
+	if (!env.RATE_LIMITER) {
+		// Fallback to KV rate limiting for Cloudflare Free Plan
+		const now = Date.now();
+		const bucket = Math.floor(now / RATE_LIMIT_WINDOW_MS);
+		const key = `rl:${ip}:${route}:${bucket}`;
+		
+		let count = 0;
+		if (env.RATE_LIMIT_KV) {
+			const stored = await env.RATE_LIMIT_KV.get(key);
+			count = stored ? parseInt(stored, 10) : 0;
+			if (count >= RATE_LIMIT_PER_MIN) {
+				const retryAfter = Math.max(1, Math.ceil(((bucket + 1) * RATE_LIMIT_WINDOW_MS - now) / 1000));
+				return json({ error: 'Too Many Requests' }, 429, {
+					'retry-after': String(retryAfter),
+				});
+			}
+			await env.RATE_LIMIT_KV.put(key, String(count + 1), { expirationTtl: 120 });
+		}
+		return null;
+	}
+
 	const id = env.RATE_LIMITER.idFromName(ip);
 	const stub = env.RATE_LIMITER.get(id);
 
